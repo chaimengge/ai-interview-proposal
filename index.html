@@ -103,14 +103,15 @@
 
         .tag {
             display: inline-block;
-            padding: 1px 8px;
-            border-radius: 10px;
-            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
             font-weight: 500;
         }
         .tag-red { background: #ffebee; color: #c62828; }
         .tag-green { background: #e8f5e9; color: #2e7d32; }
         .tag-blue { background: #e3f2fd; color: #1565c0; }
+        .tag-purple { background: #f3e5f5; color: #7b1fa2; }
 
         .scenario-table th { background: #4a5568; }
         .scenario-table .scenario-name {
@@ -253,6 +254,20 @@
         .conclusion h2 { margin-bottom: 12px; font-size: 24px; }
         .conclusion p { opacity: 0.9; font-size: 14px; }
 
+        .tech-box {
+            background: #f0f4ff;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        .tech-box .name {
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
         @media print {
             body { background: white; }
             .section { box-shadow: none; border: 1px solid #ddd; }
@@ -276,7 +291,7 @@
     <h2 class="section-title">一、项目概述</h2>
     <p>本项目旨在开发一套 <strong>纯语音 AI 面试官系统</strong>，替代传统初筛面试环节。HR 只需上传候选人简历，系统即可自动生成个性化面试题，通过真人般的语音交互完成面试，并输出结构化评估报告。</p>
     <div class="highlight-box">
-        <strong>核心价值：</strong>大幅降低 HR 初筛工作量，统一面试标准，提升候选人体验，单场面试成本约 <strong>0.76 ~ 1.64 元</strong>，为真人面试成本的 1/100。
+        <strong>核心价值：</strong>大幅降低 HR 初筛工作量，统一面试标准，提升候选人体验，单场面试成本最低约 <strong>0.76 元</strong>，为真人面试成本的 1/100。
     </div>
     <div style="margin-top:12px;padding:10px 14px;background:#e8f5e9;border-radius:6px;font-size:13px;color:#2e7d32;">
         <strong>✓ 全部为国内服务商</strong>：无需翻墙、无需国际信用卡、无需科学上网，公司内网直接调用。
@@ -299,13 +314,13 @@
         </div>
         <div class="timeline-item">
             <div class="time">T+0</div>
-            <div class="action">候选人点击链接，进入设备检测</div>
-            <div class="detail">检测麦克风权限 → 播放测试语音 → 检测环境噪音 → 提示"建议使用电脑+耳机"</div>
+            <div class="action">欢迎页 + 设备检测</div>
+            <div class="detail">面试注意事项 → 扬声器检测（AI 语音 + 声波动画） → 麦克风检测（候选人说话，音量波形反馈） → 环境噪音检测</div>
         </div>
         <div class="timeline-item">
-            <div class="time">T+30秒</div>
-            <div class="action">点击"开始面试"</div>
-            <div class="detail">AI 语音："你好，我是本次面试官。请先做个简单的自我介绍，时间 2 分钟。"</div>
+            <div class="time">T+1 分钟</div>
+            <div class="action">AI 面试官介绍注意事项</div>
+            <div class="detail">静态真人形象照片 + 情感语音："你好，我是本次面试官。面试共 30 分钟，请保持环境安静..."</div>
         </div>
         <div class="timeline-item">
             <div class="time">面试进行中</div>
@@ -325,9 +340,76 @@
     </div>
 </div>
 
-<!-- 三、技术架构 -->
+<!-- 三、与北森对比 -->
 <div class="section">
-    <h2 class="section-title">三、技术架构全貌</h2>
+    <h2 class="section-title">三、与北森 AI 面试对比（我们为什么这么做）</h2>
+    <p style="margin-bottom:16px;font-size:13px;color:#666;">北森是国内成熟的招聘 SaaS 平台，其 AI 面试流程设计有参考价值，但定位不同。</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:18%">对比维度</th>
+                <th style="width:38%">北森做法</th>
+                <th style="width:44%">我们的方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>产品定位</strong></td>
+                <td>面向所有企业的 SaaS 平台，需要收集大量候选人信息建立人才库</td>
+                <td><strong>企业私有化部署</strong>，数据不出公司，HR 已录入信息，候选人零填写</td>
+            </tr>
+            <tr>
+                <td><strong>登录方式</strong></td>
+                <td>手机号一键登录 / 短信验证码（需收集用户信息）</td>
+                <td><strong>邀请码链接，点开即用</strong>，无需注册、无需登录、无需填信息</td>
+            </tr>
+            <tr>
+                <td><strong>设备检测</strong></td>
+                <td>扬声器检测 + 麦克风检测（念诗）+ 声波动画，流程完善</td>
+                <td><strong>借鉴此设计</strong>：扬声器播放测试语音 + 声波动画，麦克风自由说话检测 + 音量波形反馈</td>
+            </tr>
+            <tr>
+                <td><strong>信息收集</strong></td>
+                <td>姓名、手机、邮箱、性别、籍贯、民族、学历、学校专业、正面照</td>
+                <td><strong>不做</strong>。HR 后台已录入，候选人只需确认"是我本人"即可</td>
+            </tr>
+            <tr>
+                <td><strong>AI 形象</strong></td>
+                <td>真人女性数字人形象（可能是预录制视频或 2D 实时数字人）</td>
+                <td><strong>三档可选</strong>：静态照片（经济）/ 预录制视频开场（推荐）/ 2D 实时数字人（预算充足）</td>
+            </tr>
+            <tr>
+                <td><strong>问题来源</strong></td>
+                <td>固定题库为主，按岗位分类</td>
+                <td><strong>AI 根据简历 + 岗位 JD 实时生成</strong>，千人千面，无法提前准备</td>
+            </tr>
+            <tr>
+                <td><strong>面试深度</strong></td>
+                <td>标准化问答，较少追问</td>
+                <td><strong>深度追问 2-3 层</strong>，答得好加压，答得差换题，像真人面试官</td>
+            </tr>
+            <tr>
+                <td><strong>部署方式</strong></td>
+                <td>SaaS，数据存储在北森服务器</td>
+                <td><strong>私有化部署</strong>，部署在公司自有服务器，数据完全自主可控</td>
+            </tr>
+            <tr>
+                <td><strong>成本</strong></td>
+                <td>按账号/按年付费，价格不透明</td>
+                <td><strong>按量付费，单场 0.76~1.64 元</strong>，成本完全透明可控</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>核心差异：</strong>北森做的是"标准化考试平台"，我们做的是"轻量级真人面试体验"。借鉴其设备检测和引导流程，但在信息收集、问题生成、追问深度上做出差异化。
+    </div>
+</div>
+
+<!-- 四、技术架构 -->
+<div class="section">
+    <h2 class="section-title">四、技术架构全貌</h2>
     <div class="flow">
         <div class="flow-item">
             <div class="icon">👤</div>
@@ -338,13 +420,19 @@
         <div class="flow-item">
             <div class="icon">🌐</div>
             <div class="label">Web 前端</div>
-            <div class="desc">React + VAD<br>自动录音检测</div>
+            <div class="desc">React 18 + Vite<br>Ant Design + VAD</div>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-item">
             <div class="icon">⚙️</div>
             <div class="label">后端服务</div>
-            <div class="desc">Node.js + SQLite<br>逻辑控制</div>
+            <div class="desc">NestJS + Prisma<br>TypeScript</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+            <div class="icon">🗄️</div>
+            <div class="label">数据层</div>
+            <div class="desc">PostgreSQL<br>Redis（可选）</div>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-item">
@@ -360,80 +448,203 @@
         </div>
     </div>
     <div class="highlight-box">
-        <strong>数据流转：</strong>候选人语音 → 浏览器录音(VAD自动结束) → 上传后端 → <strong>ASR 转文字</strong> → <strong>LLM 思考回复+评分+决策</strong> → <strong>TTS 合成语音</strong> → 返回播放 → 同时保存报告
+        <strong>数据流转：</strong>候选人语音 → 浏览器录音(VAD自动结束) → 上传后端 → <strong>ASR 转文字</strong> → <strong>LLM 思考回复+评分+决策</strong> → <strong>TTS 合成语音</strong> → 返回播放 → 同时保存报告到 PostgreSQL
     </div>
 </div>
 
-<!-- 四、各环节技术栈 -->
+<!-- 五、前端技术栈 -->
 <div class="section">
-    <h2 class="section-title">四、各环节技术栈详解</h2>
+    <h2 class="section-title">五、前端技术栈选型</h2>
+
+    <div class="tech-box">
+        <div class="name">React 18 + TypeScript</div>
+        <p>React 18 提供并发渲染能力，TypeScript 保证类型安全。候选人面试页和 HR 后台统一技术栈，便于维护。</p>
+    </div>
+    <div class="tech-box">
+        <div class="name">Vite</div>
+        <p>构建速度比 Webpack 快 10-20 倍，开发体验好，冷启动秒开。适合快速迭代。</p>
+    </div>
+    <div class="tech-box">
+        <div class="name">Ant Design 5.x</div>
+        <p>HR 后台管理界面使用 Ant Design 组件库，表单、表格、弹窗等开箱即用，视觉统一。</p>
+    </div>
+    <div class="tech-box">
+        <div class="name">Web Audio API + Silero VAD</div>
+        <p>浏览器原生录音 + 开源 VAD（语音活动检测）库，自动判断候选人说话结束，停顿 2 秒自动上传，全程无需手动点击"回答完毕"。</p>
+    </div>
+
     <table>
         <thead>
-            <tr>
-                <th style="width:15%">环节</th>
-                <th style="width:22%">技术方案</th>
-                <th style="width:33%">作用说明</th>
-                <th style="width:14%">成本</th>
-                <th style="width:16%">备注</th>
-            </tr>
+            <tr><th>技术</th><th>版本</th><th>用途</th><th>成本</th></tr>
         </thead>
         <tbody>
-            <tr>
-                <td><strong>前端页面</strong></td>
-                <td>React / Vue<br>Web Audio API<br>Silero VAD</td>
-                <td>面试交互页面、麦克风录音、语音活动检测（自动判断说话结束，无需手动点击）</td>
-                <td><span class="tag tag-green">免费开源</span></td>
-                <td>浏览器原生支持</td>
-            </tr>
-            <tr>
-                <td><strong>后端服务</strong></td>
-                <td>Node.js (Express)<br>SQLite / MySQL<br>WebSocket</td>
-                <td>接收音频、调用 AI 接口、存储面试数据、生成报告、HR 后台接口</td>
-                <td><span class="tag tag-green">自部署免费</span></td>
-                <td>公司已有服务器</td>
-            </tr>
-            <tr>
-                <td><strong>语音识别<br>(ASR)</strong></td>
-                <td><strong>讯飞语音识别</strong><br>阿里云听悟</td>
-                <td>将候选人语音转为文字，支持降噪、方言识别。候选人实际说话约 15 分钟/场</td>
-                <td><span class="tag tag-blue">~0.6元/场</span></td>
-                <td>按音频时长计费</td>
-            </tr>
-            <tr>
-                <td><strong>大模型<br>(LLM)</strong></td>
-                <td><strong>通义千问 2.5-Max</strong><br>DeepSeek V3</td>
-                <td>核心大脑：理解回答、生成追问、评分、判断下一题/结束面试。一场约 12 轮对话，约 20K input + 5K output tokens</td>
-                <td><span class="tag tag-blue">0.08~0.69元</span></td>
-                <td>按 Token 计费</td>
-            </tr>
-            <tr>
-                <td><strong>语音合成<br>(TTS)</strong></td>
-                <td><strong>MiniMax 情感语音</strong><br>阿里云情感语音</td>
-                <td>将 AI 回复转为真人般语音，含语气、停顿、呼吸声。一场约 4,000 字</td>
-                <td><span class="tag tag-blue">0.08~0.12元</span></td>
-                <td>按字符数计费</td>
-            </tr>
-            <tr>
-                <td><strong>部署环境</strong></td>
-                <td>公司自建服务器<br>Nginx 反向代理</td>
-                <td>托管前后端、数据库、静态资源</td>
-                <td><span class="tag tag-green">已有资源</span></td>
-                <td>无需额外采购</td>
-            </tr>
-            <tr>
-                <td><strong>人脸验证<br>(可选)</strong></td>
-                <td>阿里云人脸比对</td>
-                <td>防止替考，验证候选人本人参加面试</td>
-                <td><span class="tag tag-green">~0.5元/次</span></td>
-                <td>MVP 阶段可不做</td>
-            </tr>
+            <tr><td>React</td><td>18.x</td><td>UI 框架</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>TypeScript</td><td>5.x</td><td>类型安全</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>Vite</td><td>5.x</td><td>构建工具</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>Ant Design</td><td>5.x</td><td>UI 组件库（HR 后台）</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>Silero VAD</td><td>最新版</td><td>语音活动检测</td><td><span class="tag tag-green">免费开源</span></td></tr>
         </tbody>
     </table>
 </div>
 
-<!-- 五、成本明细（核心板块） -->
+<!-- 六、后端技术栈 -->
 <div class="section">
-    <h2 class="section-title">五、单场面试成本明细（逐笔核算）</h2>
+    <h2 class="section-title">六、后端技术栈选型</h2>
+
+    <div class="tech-box">
+        <div class="name">NestJS + TypeScript</div>
+        <p>企业级 Node.js 框架，模块化架构，依赖注入，适合团队协作开发。相比 Express，NestJS 项目结构更规范，后期扩展（如微服务拆分）更容易。</p>
+    </div>
+    <div class="tech-box">
+        <div class="name">Prisma ORM</div>
+        <p>类型安全的数据库操作工具。定义 schema 后自动生成 TypeScript 类型，前后端可共享数据类型。支持数据库迁移管理，团队开发时表结构变更容易同步。</p>
+    </div>
+    <div class="tech-box">
+        <div class="name">PostgreSQL</div>
+        <p>关系型数据库，支持 JSON 字段、复杂查询。面试报告（评分、评语）可直接存 JSONB，查询灵活。</p>
+    </div>
+    <div class="tech-box">
+        <div class="name">Redis（可选）</div>
+        <p>MVP 阶段非必需。后期可用于：API 限流（防候选人刷接口）、WebSocket 会话管理、热点数据缓存。</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr><th>技术</th><th>版本</th><th>用途</th><th>成本</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>NestJS</td><td>10.x</td><td>后端 API 框架</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>TypeScript</td><td>5.x</td><td>类型安全</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>Prisma</td><td>5.x</td><td>ORM + 数据库迁移</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>PostgreSQL</td><td>15+</td><td>主数据库</td><td><span class="tag tag-green">免费开源</span></td></tr>
+            <tr><td>Redis</td><td>7.x</td><td>缓存/限流（可选）</td><td><span class="tag tag-green">免费开源</span></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 七、数据库设计 -->
+<div class="section">
+    <h2 class="section-title">七、数据库设计（Prisma Schema）</h2>
+    <p style="margin-bottom:12px;font-size:13px;color:#666;">Prisma 通过 schema 定义表结构，自动生成 TypeScript 类型和数据库迁移。</p>
+
+    <div class="token-detail" style="font-family:monospace;line-height:1.8;">
+model Candidate {<br>
+&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@id @default(uuid())<br>
+&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String<br>
+&nbsp;&nbsp;phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String<br>
+&nbsp;&nbsp;email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String?<br>
+&nbsp;&nbsp;resumeUrl&nbsp;String?<br>
+&nbsp;&nbsp;interviews Interview[]<br>
+}<br><br>
+model Interview {<br>
+&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;@id @default(uuid())<br>
+&nbsp;&nbsp;candidateId String<br>
+&nbsp;&nbsp;jobTitle&nbsp;&nbsp;&nbsp;&nbsp;String<br>
+&nbsp;&nbsp;status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;// pending / ongoing / completed<br>
+&nbsp;&nbsp;totalScore&nbsp;&nbsp;Int?<br>
+&nbsp;&nbsp;report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Json?&nbsp;&nbsp;&nbsp;// AI 评估报告存 JSON<br>
+&nbsp;&nbsp;createdAt&nbsp;&nbsp;&nbsp;DateTime @default(now())<br>
+&nbsp;&nbsp;candidate&nbsp;&nbsp;&nbsp;Candidate @relation(fields: [candidateId], references: [id])<br>
+&nbsp;&nbsp;messages&nbsp;&nbsp;&nbsp;&nbsp;Message[]<br>
+}<br><br>
+model Message {<br>
+&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;@id @default(uuid())<br>
+&nbsp;&nbsp;interviewId String<br>
+&nbsp;&nbsp;role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;// user / assistant<br>
+&nbsp;&nbsp;content&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;// 文字内容<br>
+&nbsp;&nbsp;audioUrl&nbsp;&nbsp;&nbsp;&nbsp;String?&nbsp;&nbsp;// 语音文件地址<br>
+&nbsp;&nbsp;score&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Int?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 该轮评分<br>
+&nbsp;&nbsp;createdAt&nbsp;&nbsp;&nbsp;DateTime @default(now())<br>
+&nbsp;&nbsp;interview&nbsp;&nbsp;&nbsp;Interview @relation(fields: [interviewId], references: [id])<br>
+}
+    </div>
+</div>
+
+<!-- 八、三档预算方案 -->
+<div class="section">
+    <h2 class="section-title">八、三档预算方案对比</h2>
+    <p style="margin-bottom:16px;font-size:13px;color:#666;">根据预算和体验要求，提供三档方案。所有方案均为<strong>纯国内服务商</strong>，无需翻墙。</p>
+
+    <table class="scenario-table">
+        <thead>
+            <tr>
+                <th style="width:16%">方案</th>
+                <th style="width:24%">AI 形象</th>
+                <th style="width:28%">技术差异</th>
+                <th style="width:14%">单场成本</th>
+                <th style="width:18%">适合场景</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="scenario-name">
+                    <span class="tag tag-green">经济版</span><br>
+                    MVP 起步
+                </td>
+                <td>
+                    无视频形象<br>
+                    仅显示静态照片<br>
+                    + 情感语音
+                </td>
+                <td>
+                    LLM: DeepSeek V3<br>
+                    ASR: 阿里云<br>
+                    TTS: 阿里云情感语音<br>
+                    不做 Redis
+                </td>
+                <td style="font-size:20px;font-weight:700;color:#2e7d32;">0.76 元</td>
+                <td>预算敏感<br>快速验证产品<br>海招初筛</td>
+            </tr>
+            <tr>
+                <td class="scenario-name">
+                    <span class="tag tag-blue">推荐版</span><br>
+                    性价比最优
+                </td>
+                <td>
+                    预录制真人视频<br>
+                    开场 30 秒介绍<br>
+                    + 情感语音<br>
+                    + 纯语音面试
+                </td>
+                <td>
+                    LLM: 通义千问 2.5-Max<br>
+                    ASR: 讯飞<br>
+                    TTS: MiniMax 情感语音<br>
+                    加 Redis 限流
+                </td>
+                <td style="font-size:20px;font-weight:700;color:#667eea;">1.41 元</td>
+                <td>日常初筛<br>效果与成本平衡<br>长期使用</td>
+            </tr>
+            <tr>
+                <td class="scenario-name">
+                    <span class="tag tag-purple">效果版</span><br>
+                    预算充足
+                </td>
+                <td>
+                    2D 实时数字人<br>
+                    全程视频面试<br>
+                    口型同步
+                </td>
+                <td>
+                    在推荐版基础上<br>
+                    + 硅基智能/硅语数字人<br>
+                    全程视频渲染<br>
+                    完整 Redis + PG
+                </td>
+                <td style="font-size:20px;font-weight:700;color:#7b1fa2;">~20 元</td>
+                <td>核心岗位<br>品牌展示<br>追求极致体验</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>关键结论：</strong>经济版与推荐版差价仅 <strong>0.65 元/场</strong>，但体验提升明显（通义千问追问更自然 + MiniMax 语音更真人）。如预算允许，<strong>推荐版是最佳选择</strong>。效果版成本跃升主要是因为数字人 API 按分钟计费。
+    </div>
+</div>
+
+<!-- 九、推荐版成本明细 -->
+<div class="section">
+    <h2 class="section-title">九、推荐版成本明细（逐笔核算）</h2>
     <p style="margin-bottom:16px;font-size:13px;color:#666;">以下按一场 <strong>30 分钟</strong> 标准面试，逐项拆解钱花在哪、怎么算出来的。</p>
 
     <table>
@@ -494,92 +705,76 @@
     </div>
 </div>
 
-<!-- 六、三种方案对比 -->
+<!-- 十、经济版 vs 效果版成本 -->
 <div class="section">
-    <h2 class="section-title">六、三种方案成本对比</h2>
-    <p style="margin-bottom:16px;font-size:13px;color:#666;">同一套 Token 消耗，换不同服务商，价格差异如下。领导可按预算选型。<strong>均为国内服务商，无需翻墙。</strong></p>
+    <h2 class="section-title">十、经济版与效果版成本说明</h2>
 
-    <table class="scenario-table">
+    <h3 style="margin:20px 0 12px;color:#2e7d32;font-size:16px;">经济版：0.76 元/场</h3>
+    <table>
         <thead>
-            <tr>
-                <th style="width:16%">方案</th>
-                <th style="width:22%">技术选型</th>
-                <th style="width:36%">计算明细</th>
-                <th style="width:12%">单场</th>
-                <th style="width:14%">适合场景</th>
-            </tr>
+            <tr><th>环节</th><th>计算过程</th><th>小计</th></tr>
         </thead>
         <tbody>
             <tr>
-                <td class="scenario-name">
-                    <span class="tag tag-green">经济版</span><br>
-                    追求最低成本
-                </td>
-                <td>
-                    ASR: 阿里云<br>
-                    LLM: DeepSeek V3<br>
-                    TTS: 阿里云情感语音
-                </td>
-                <td>
-                    ASR: 0.25h × 2.4 = <strong>0.60</strong><br>
-                    LLM: 20K×0.002 + 4.8K×0.008 = <strong>0.08</strong><br>
-                    TTS: 4千字符 × 0.02 = <strong>0.08</strong><br>
-                </td>
-                <td style="font-size:20px;font-weight:700;color:#2e7d32;">0.76 元</td>
-                <td>海招初筛<br>预算敏感</td>
+                <td>ASR（阿里云）</td>
+                <td>15 分钟 ÷ 60 × 2.4 元/小时</td>
+                <td><strong>0.60 元</strong></td>
             </tr>
             <tr>
-                <td class="scenario-name">
-                    <span class="tag tag-blue">推荐版</span><br>
-                    性价比最优
-                </td>
-                <td>
-                    ASR: 讯飞<br>
-                    LLM: 通义千问 2.5-Max<br>
-                    TTS: MiniMax 情感语音
-                </td>
-                <td>
-                    ASR: 0.25h × 2.4 = <strong>0.60</strong><br>
-                    LLM: 20K×0.02 + 4.8K×0.06 = <strong>0.69</strong><br>
-                    TTS: 4千字符 × 0.03 = <strong>0.12</strong><br>
-                </td>
-                <td style="font-size:20px;font-weight:700;color:#667eea;">1.41 元</td>
-                <td>日常初筛<br>效果与成本平衡</td>
+                <td>LLM（DeepSeek V3）</td>
+                <td>Input: 20K × ¥0.002 + Output: 4.8K × ¥0.008</td>
+                <td><strong>0.08 元</strong></td>
             </tr>
             <tr>
-                <td class="scenario-name">
-                    <span class="tag tag-red">效果版</span><br>
-                    追求最佳体验
-                </td>
-                <td>
-                    ASR: 讯飞<br>
-                    LLM: 通义千问 2.5-Max（15轮深度面试）<br>
-                    TTS: MiniMax 情感语音
-                </td>
-                <td>
-                    ASR: 0.25h × 2.4 = <strong>0.60</strong><br>
-                    LLM: 25K×0.02 + 6K×0.06 = <strong>0.86</strong><br>
-                    TTS: 6千字符 × 0.03 = <strong>0.18</strong><br>
-                </td>
-                <td style="font-size:20px;font-weight:700;color:#c62828;">1.64 元</td>
-                <td>核心岗位<br>技术深度面试</td>
+                <td>TTS（阿里云）</td>
+                <td>4 千字符 × ¥0.02</td>
+                <td><strong>0.08 元</strong></td>
             </tr>
         </tbody>
     </table>
+    <p style="font-size:12px;color:#666;">DeepSeek V3 价格极低（¥0.002/千 tokens），但面试追问深度和通义千问有差距，适合海招初筛。</p>
 
+    <h3 style="margin:24px 0 12px;color:#7b1fa2;font-size:16px;">效果版：约 20 元/场</h3>
+    <table>
+        <thead>
+            <tr><th>环节</th><th>计算过程</th><th>小计</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ASR（讯飞）</td>
+                <td>15 分钟 ÷ 60 × 2.4 元/小时</td>
+                <td><strong>0.60 元</strong></td>
+            </tr>
+            <tr>
+                <td>LLM（通义千问 2.5-Max）</td>
+                <td>Input: 25K × ¥0.02 + Output: 6K × ¥0.06（15轮深度面试）</td>
+                <td><strong>0.86 元</strong></td>
+            </tr>
+            <tr>
+                <td>TTS（MiniMax）</td>
+                <td>6 千字符 × ¥0.03</td>
+                <td><strong>0.18 元</strong></td>
+            </tr>
+            <tr>
+                <td>2D 实时数字人（硅基智能）</td>
+                <td>AI 说话约 15 分钟 × 1.2 元/分钟（硅基智能基础版定价）</td>
+                <td><strong>18.00 元</strong></td>
+            </tr>
+        </tbody>
+    </table>
     <div class="highlight-box">
-        <strong>关键结论：</strong>三种方案均为<strong>国内服务商</strong>，无需翻墙、无需国际信用卡。单场成本在 <strong>0.76 元 ~ 1.64 元</strong> 之间，最大变量是 LLM 选经济型（DeepSeek）还是均衡型（通义千问）。
+        <strong>效果版成本说明：</strong>成本跃升主要来自 <strong>2D 实时数字人</strong>（约 18 元/场）。数字人服务商按视频渲染时长计费，AI 面试官说话时间越长，成本越高。如预算有限，可先采用<strong>预录制视频开场</strong>（仅增加一次性录制成本，无后续使用费用）。
     </div>
 </div>
 
-<!-- 七、月度成本 -->
+<!-- 十一、月度成本测算 -->
 <div class="section">
-    <h2 class="section-title">七、月度成本测算</h2>
+    <h2 class="section-title">十一、月度成本测算（推荐版 1.41元/场）</h2>
     <table>
         <thead>
             <tr>
                 <th>面试场次</th>
-                <th>月度 AI 费用<br><span style="font-size:11px;font-weight:normal;">(推荐版 1.41元/场)</span></th>
+                <th>月度 AI 费用</th>
                 <th>HR 人工面试成本<br><span style="font-size:11px;font-weight:normal;">(专员月薪8K，单场30分钟)</span></th>
                 <th>月度节省</th>
                 <th>节省比例</th>
@@ -612,9 +807,9 @@
     <p style="font-size:12px;color:#888;margin-top:10px;">* HR 成本按专员月薪 8,000 元、月工作 160 小时、单场面试占用 30 分钟（含准备+记录）估算。</p>
 </div>
 
-<!-- 八、Token 消耗详解 -->
+<!-- 十二、Token 消耗详解 -->
 <div class="section">
-    <h2 class="section-title">八、Token 消耗详解（给领导看的算账依据）</h2>
+    <h2 class="section-title">十二、Token 消耗详解（给领导看的算账依据）</h2>
     <p style="margin-bottom:16px;">领导如果问"为什么 LLM 要花 0.69 元"，以下就是每一笔 Token 的来龙去脉。</p>
 
     <div class="cost-card">
@@ -661,9 +856,9 @@
     </div>
 </div>
 
-<!-- 九、定价来源 -->
+<!-- 十三、定价来源 -->
 <div class="section">
-    <h2 class="section-title">九、定价来源（有据可查）</h2>
+    <h2 class="section-title">十三、定价来源（有据可查）</h2>
     <p style="margin-bottom:12px;font-size:13px;color:#666;">所有单价均来自服务商官方定价页，非估算。</p>
     <table>
         <thead>
@@ -701,18 +896,18 @@
                 <td>MiniMax 开放平台 > 语音合成</td>
             </tr>
             <tr>
-                <td>阿里云</td>
-                <td>情感语音合成</td>
-                <td>~¥0.02/千字符</td>
-                <td>阿里云 > 智能语音交互 > 语音合成</td>
+                <td>硅基智能</td>
+                <td>2D 实时数字人</td>
+                <td>~1-3 元/分钟（基础版）</td>
+                <td>硅基智能官网</td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<!-- 十、真人化方案 -->
+<!-- 十四、真人化方案 -->
 <div class="section">
-    <h2 class="section-title">十、AI 真人化方案（核心壁垒）</h2>
+    <h2 class="section-title">十四、AI 真人化方案</h2>
     <p style="margin-bottom:16px;">要达到"像真人在面试"，必须在以下三方面投入：</p>
     <table>
         <thead>
@@ -741,14 +936,11 @@
             </tr>
         </tbody>
     </table>
-    <div class="highlight-box" style="margin-top:16px;">
-        <strong>投入产出结论：</strong>TTS 选 MiniMax（多花约 0.04 元/场），LLM 选通义千问 2.5-Max（多花约 0.6 元/场），总成本增加约 0.6 元/场，但体验从"机器人"提升到"专业面试官"。
-    </div>
 </div>
 
-<!-- 十一、追问与结束逻辑 -->
+<!-- 十五、追问与结束逻辑 -->
 <div class="section">
-    <h2 class="section-title">十一、AI 怎么判断追问 / 换题 / 结束？</h2>
+    <h2 class="section-title">十五、AI 怎么判断追问 / 换题 / 结束？</h2>
     <p style="margin-bottom:12px;">不是固定题序，而是根据回答动态决定（由 LLM Prompt 控制）：</p>
     <table>
         <thead>
@@ -780,9 +972,9 @@
     <p style="font-size:12px;color:#888;margin-top:10px;">兜底规则：至少问满 3 题（防止上来就结束），最多问 8 题，总时长超 30 分钟强制结束。</p>
 </div>
 
-<!-- 十二、面试结果 -->
+<!-- 十六、面试结果 -->
 <div class="section">
-    <h2 class="section-title">十二、面试结果怎么出？</h2>
+    <h2 class="section-title">十六、面试结果怎么出？</h2>
     <p style="margin-bottom:12px;"><strong>AI 不直接说"通过/不通过"</strong>，而是给 HR 一份详细报告，由 HR 决策。</p>
     <div class="cost-card">
         <div class="title">AI 面试评估报告示例</div>
@@ -803,9 +995,9 @@
     </p>
 </div>
 
-<!-- 十三、可行性评估 -->
+<!-- 十七、可行性评估 -->
 <div class="section">
-    <h2 class="section-title">十三、可行性评估与风险</h2>
+    <h2 class="section-title">十七、可行性评估与风险</h2>
     <table>
         <thead>
             <tr><th style="width:16%">评估项</th><th style="width:40%">结论</th><th style="width:44%">应对措施</th></tr>
@@ -840,9 +1032,9 @@
     </table>
 </div>
 
-<!-- 十四、交付里程碑 -->
+<!-- 十八、交付里程碑 -->
 <div class="section">
-    <h2 class="section-title">十四、项目交付里程碑</h2>
+    <h2 class="section-title">十八、项目交付里程碑</h2>
     <table>
         <thead>
             <tr><th>阶段</th><th>周期</th><th>交付内容</th></tr>
@@ -873,9 +1065,9 @@
     <p style="font-size:12px;color:#888;margin-top:10px;">* 总周期约 6-8 周，可根据优先级调整阶段顺序</p>
 </div>
 
-<!-- 十五、客户需提供 -->
+<!-- 十九、客户需提供 -->
 <div class="section">
-    <h2 class="section-title">十五、客户需自行申请的账号</h2>
+    <h2 class="section-title">十九、客户需自行申请的账号</h2>
     <div class="client-require">
         <h3>必须由客户自行申请和承担的（涉及账号与 API Key）</h3>
         <ul>
@@ -883,13 +1075,14 @@
             <li><strong>讯飞开放平台账号</strong>：备用语音识别方案（中文效果最优）</li>
             <li><strong>MiniMax 开放平台账号</strong>：用于情感语音合成（TTS），追求真人感必选</li>
             <li><strong>DeepSeek 开放平台账号（可选）</strong>：经济版 LLM 方案，性价比极高</li>
+            <li><strong>硅基智能/硅语账号（可选）</strong>：效果版 2D 实时数字人</li>
         </ul>
         <div style="margin-top:12px;padding:10px 14px;background:#e8f5e9;border-radius:6px;font-size:13px;color:#2e7d32;">
             <strong>✓ 全部为国内服务商</strong>：无需翻墙、无需国际信用卡、无需科学上网，公司内网直接调用。
         </div>
     </div>
     <div class="highlight-box" style="margin-top:12px;">
-        <strong>重要说明：</strong>AI 服务（ASR/LLM/TTS）的 API Key 必须由客户自行申请和管理。开发方负责接入代码，但<strong>不托管客户的 AI 账号和费用</strong>。客户直接按实际用量向服务商充值。
+        <strong>重要说明：</strong>AI 服务（ASR/LLM/TTS/数字人）的 API Key 必须由客户自行申请和管理。开发方负责接入代码，但<strong>不托管客户的 AI 账号和费用</strong>。客户直接按实际用量向服务商充值。
     </div>
 </div>
 
@@ -897,7 +1090,8 @@
 <div class="conclusion">
     <h2>方案总结</h2>
     <p>AI 面试官系统在技术层面完全可行，核心依赖成熟国内云服务（ASR/LLM/TTS）。</p>
-    <p>开发周期约 6-8 周，单场面试成本约 0.76 ~ 1.64 元，可替代 80% 的初筛工作量。</p>
+    <p>前端 React 18 + Vite + Ant Design，后端 NestJS + Prisma + PostgreSQL，架构清晰可扩展。</p>
+    <p>开发周期约 6-8 周，单场面试成本最低 0.76 元、推荐 1.41 元、效果版约 20 元，可替代 80% 的初筛工作量。</p>
     <p style="margin-top:16px;font-size:13px;opacity:0.8;">下一步：确认预算与 AI 服务商账号申请，即可启动开发。</p>
 </div>
 
