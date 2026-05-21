@@ -81,12 +81,6 @@
             font-weight: 600;
             margin: 8px 0;
         }
-        .calc-box .result {
-            color: #2e7d32;
-            font-weight: 700;
-            font-size: 15px;
-            margin-top: 8px;
-        }
 
         .cost-card {
             background: #f8f9ff;
@@ -96,7 +90,6 @@
             margin: 10px 0;
         }
         .cost-card .title { font-weight: 600; color: #1a1a2e; margin-bottom: 6px; }
-        .cost-card .amount { font-size: 22px; color: #667eea; font-weight: 700; }
 
         .highlight-box {
             background: #fff8e1;
@@ -158,6 +151,108 @@
             font-family: monospace;
         }
 
+        .flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 24px 0;
+        }
+        .flow-item {
+            flex: 1;
+            min-width: 130px;
+            text-align: center;
+            padding: 16px 10px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border: 2px solid #e8ecff;
+        }
+        .flow-item .icon { font-size: 24px; margin-bottom: 6px; }
+        .flow-item .label { font-weight: 600; color: #1a1a2e; font-size: 13px; }
+        .flow-item .desc { font-size: 11px; color: #666; margin-top: 3px; }
+        .flow-arrow { font-size: 18px; color: #667eea; font-weight: bold; }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 18px;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .timeline-item .time {
+            font-size: 11px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .timeline-item .action { font-weight: 600; color: #1a1a2e; font-size: 14px; }
+        .timeline-item .detail { font-size: 12px; color: #666; margin-top: 3px; }
+
+        .client-require {
+            background: #fff8e1;
+            border: 1px solid #ffcc80;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+        .client-require h3 {
+            color: #e65100;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .client-require ul {
+            list-style: none;
+            padding: 0;
+        }
+        .client-require li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 13px;
+        }
+        .client-require li::before {
+            content: "📋";
+            position: absolute;
+            left: 0;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .conclusion h2 { margin-bottom: 12px; font-size: 24px; }
+        .conclusion p { opacity: 0.9; font-size: 14px; }
+
         @media print {
             body { background: white; }
             .section { box-shadow: none; border: 1px solid #ddd; }
@@ -176,19 +271,179 @@
 
 <div class="container">
 
-<!-- 成本总览 -->
+<!-- 一、项目概述 -->
 <div class="section">
-    <h2 class="section-title">一、单场面试成本总览（逐笔核算）</h2>
+    <h2 class="section-title">一、项目概述</h2>
+    <p>本项目旨在开发一套 <strong>纯语音 AI 面试官系统</strong>，替代传统初筛面试环节。HR 只需上传候选人简历，系统即可自动生成个性化面试题，通过真人般的语音交互完成面试，并输出结构化评估报告。</p>
+    <div class="highlight-box">
+        <strong>核心价值：</strong>大幅降低 HR 初筛工作量，统一面试标准，提升候选人体验，单场面试成本约 <strong>0.76 ~ 1.64 元</strong>，为真人面试成本的 1/100。
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:#e8f5e9;border-radius:6px;font-size:13px;color:#2e7d32;">
+        <strong>✓ 全部为国内服务商</strong>：无需翻墙、无需国际信用卡、无需科学上网，公司内网直接调用。
+    </div>
+</div>
+
+<!-- 二、全流程体验 -->
+<div class="section">
+    <h2 class="section-title">二、候选人面试全流程体验</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">面试前 1 天</div>
+            <div class="action">HR 在后台创建面试</div>
+            <div class="detail">上传候选人简历 PDF → 选择岗位模板 → 系统自动生成 5-8 道个性化题目 → 生成唯一面试链接</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">面试前 30 分钟</div>
+            <div class="action">候选人收到短信/邮件</div>
+            <div class="detail">内容："【XX公司】您好，您已预约 AI 面试，请点击链接开始：xxx.com/interview/abc123"</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">T+0</div>
+            <div class="action">候选人点击链接，进入设备检测</div>
+            <div class="detail">检测麦克风权限 → 播放测试语音 → 检测环境噪音 → 提示"建议使用电脑+耳机"</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">T+30秒</div>
+            <div class="action">点击"开始面试"</div>
+            <div class="detail">AI 语音："你好，我是本次面试官。请先做个简单的自我介绍，时间 2 分钟。"</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">面试进行中</div>
+            <div class="action">全自动一问一答，无需手动操作</div>
+            <div class="detail">候选人说话 → 停顿 2 秒自动结束录音（VAD） → AI 处理 → AI 语音回复（含追问/换题/结束判断）</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">面试结束</div>
+            <div class="action">AI 礼貌收尾</div>
+            <div class="detail">"今天的面试就到这里，感谢你的时间，结果会在 2 个工作日内通知。" → 页面显示"面试已结束"</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">面试后 1 分钟</div>
+            <div class="action">HR 后台收到评估报告</div>
+            <div class="detail">综合评分、各维度打分、AI 评语、风险提示、面试录音与文字记录</div>
+        </div>
+    </div>
+</div>
+
+<!-- 三、技术架构 -->
+<div class="section">
+    <h2 class="section-title">三、技术架构全貌</h2>
+    <div class="flow">
+        <div class="flow-item">
+            <div class="icon">👤</div>
+            <div class="label">候选人</div>
+            <div class="desc">浏览器/手机<br>录音+播放</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+            <div class="icon">🌐</div>
+            <div class="label">Web 前端</div>
+            <div class="desc">React + VAD<br>自动录音检测</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+            <div class="icon">⚙️</div>
+            <div class="label">后端服务</div>
+            <div class="desc">Node.js + SQLite<br>逻辑控制</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+            <div class="icon">🧠</div>
+            <div class="label">AI 服务集群</div>
+            <div class="desc">ASR + LLM + TTS<br>纯国内服务商</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+            <div class="icon">📊</div>
+            <div class="label">HR 后台</div>
+            <div class="desc">查看报告<br>决策管理</div>
+        </div>
+    </div>
+    <div class="highlight-box">
+        <strong>数据流转：</strong>候选人语音 → 浏览器录音(VAD自动结束) → 上传后端 → <strong>ASR 转文字</strong> → <strong>LLM 思考回复+评分+决策</strong> → <strong>TTS 合成语音</strong> → 返回播放 → 同时保存报告
+    </div>
+</div>
+
+<!-- 四、各环节技术栈 -->
+<div class="section">
+    <h2 class="section-title">四、各环节技术栈详解</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:15%">环节</th>
+                <th style="width:22%">技术方案</th>
+                <th style="width:33%">作用说明</th>
+                <th style="width:14%">成本</th>
+                <th style="width:16%">备注</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>前端页面</strong></td>
+                <td>React / Vue<br>Web Audio API<br>Silero VAD</td>
+                <td>面试交互页面、麦克风录音、语音活动检测（自动判断说话结束，无需手动点击）</td>
+                <td><span class="tag tag-green">免费开源</span></td>
+                <td>浏览器原生支持</td>
+            </tr>
+            <tr>
+                <td><strong>后端服务</strong></td>
+                <td>Node.js (Express)<br>SQLite / MySQL<br>WebSocket</td>
+                <td>接收音频、调用 AI 接口、存储面试数据、生成报告、HR 后台接口</td>
+                <td><span class="tag tag-green">自部署免费</span></td>
+                <td>公司已有服务器</td>
+            </tr>
+            <tr>
+                <td><strong>语音识别<br>(ASR)</strong></td>
+                <td><strong>讯飞语音识别</strong><br>阿里云听悟</td>
+                <td>将候选人语音转为文字，支持降噪、方言识别。候选人实际说话约 15 分钟/场</td>
+                <td><span class="tag tag-blue">~0.6元/场</span></td>
+                <td>按音频时长计费</td>
+            </tr>
+            <tr>
+                <td><strong>大模型<br>(LLM)</strong></td>
+                <td><strong>通义千问 2.5-Max</strong><br>DeepSeek V3</td>
+                <td>核心大脑：理解回答、生成追问、评分、判断下一题/结束面试。一场约 12 轮对话，约 20K input + 5K output tokens</td>
+                <td><span class="tag tag-blue">0.08~0.69元</span></td>
+                <td>按 Token 计费</td>
+            </tr>
+            <tr>
+                <td><strong>语音合成<br>(TTS)</strong></td>
+                <td><strong>MiniMax 情感语音</strong><br>阿里云情感语音</td>
+                <td>将 AI 回复转为真人般语音，含语气、停顿、呼吸声。一场约 4,000 字</td>
+                <td><span class="tag tag-blue">0.08~0.12元</span></td>
+                <td>按字符数计费</td>
+            </tr>
+            <tr>
+                <td><strong>部署环境</strong></td>
+                <td>公司自建服务器<br>Nginx 反向代理</td>
+                <td>托管前后端、数据库、静态资源</td>
+                <td><span class="tag tag-green">已有资源</span></td>
+                <td>无需额外采购</td>
+            </tr>
+            <tr>
+                <td><strong>人脸验证<br>(可选)</strong></td>
+                <td>阿里云人脸比对</td>
+                <td>防止替考，验证候选人本人参加面试</td>
+                <td><span class="tag tag-green">~0.5元/次</span></td>
+                <td>MVP 阶段可不做</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 五、成本明细（核心板块） -->
+<div class="section">
+    <h2 class="section-title">五、单场面试成本明细（逐笔核算）</h2>
     <p style="margin-bottom:16px;font-size:13px;color:#666;">以下按一场 <strong>30 分钟</strong> 标准面试，逐项拆解钱花在哪、怎么算出来的。</p>
 
     <table>
         <thead>
             <tr>
-                <th style="width:16%">环节</th>
-                <th style="width:20%">计费依据</th>
-                <th style="width:38%">计算过程</th>
+                <th style="width:14%">环节</th>
+                <th style="width:18%">计费依据</th>
+                <th style="width:40%">计算过程</th>
                 <th style="width:14%">小计</th>
-                <th style="width:12%">备注</th>
+                <th style="width:14%">备注</th>
             </tr>
         </thead>
         <tbody>
@@ -235,23 +490,23 @@
 
     <div class="summary-bar">
         <div class="big-number">1.41 元</div>
-        <div class="label">经济方案单场成本（通义千问 + 阿里云 ASR + MiniMax TTS）</div>
+        <div class="label">推荐版单场成本（通义千问 + 阿里云 ASR + MiniMax TTS）</div>
     </div>
 </div>
 
-<!-- 不同方案对比 -->
+<!-- 六、三种方案对比 -->
 <div class="section">
-    <h2 class="section-title">二、三种方案成本对比</h2>
-    <p style="margin-bottom:16px;font-size:13px;color:#666;">同一套 Token 消耗，换不同服务商，价格差异如下。领导可按预算选型。</p>
+    <h2 class="section-title">六、三种方案成本对比</h2>
+    <p style="margin-bottom:16px;font-size:13px;color:#666;">同一套 Token 消耗，换不同服务商，价格差异如下。领导可按预算选型。<strong>均为国内服务商，无需翻墙。</strong></p>
 
     <table class="scenario-table">
         <thead>
             <tr>
-                <th style="width:18%">方案</th>
+                <th style="width:16%">方案</th>
                 <th style="width:22%">技术选型</th>
-                <th style="width:35%">计算明细</th>
+                <th style="width:36%">计算明细</th>
                 <th style="width:12%">单场</th>
-                <th style="width:13%">适合场景</th>
+                <th style="width:14%">适合场景</th>
             </tr>
         </thead>
         <tbody>
@@ -317,10 +572,9 @@
     </div>
 </div>
 
-<!-- 月度成本 -->
+<!-- 七、月度成本 -->
 <div class="section">
-    <h2 class="section-title">三、月度成本测算</h2>
-
+    <h2 class="section-title">七、月度成本测算</h2>
     <table>
         <thead>
             <tr>
@@ -355,14 +609,12 @@
             </tr>
         </tbody>
     </table>
-
     <p style="font-size:12px;color:#888;margin-top:10px;">* HR 成本按专员月薪 8,000 元、月工作 160 小时、单场面试占用 30 分钟（含准备+记录）估算。</p>
 </div>
 
-<!-- Token 消耗详细说明 -->
+<!-- 八、Token 消耗详解 -->
 <div class="section">
-    <h2 class="section-title">四、Token 消耗详解（给领导看的算账依据）</h2>
-
+    <h2 class="section-title">八、Token 消耗详解（给领导看的算账依据）</h2>
     <p style="margin-bottom:16px;">领导如果问"为什么 LLM 要花 0.69 元"，以下就是每一笔 Token 的来龙去脉。</p>
 
     <div class="cost-card">
@@ -372,7 +624,6 @@
             约 <code>3,000 tokens</code> × 12 轮 = <code>36,000 tokens</code>
         </div>
     </div>
-
     <div class="cost-card">
         <div class="title">2. 历史对话累积（上下文）</div>
         <div class="token-detail">
@@ -383,7 +634,6 @@
             累积约 <code>8,000 tokens</code>
         </div>
     </div>
-
     <div class="cost-card">
         <div class="title">3. 用户输入（候选人语音转文字）</div>
         <div class="token-detail">
@@ -391,7 +641,6 @@
             合计约 <code>4,000 tokens</code>
         </div>
     </div>
-
     <div class="cost-card">
         <div class="title">4. AI 输出（面试官回复+评分）</div>
         <div class="token-detail">
@@ -412,11 +661,10 @@
     </div>
 </div>
 
-<!-- 定价来源 -->
+<!-- 九、定价来源 -->
 <div class="section">
-    <h2 class="section-title">五、定价来源（有据可查）</h2>
+    <h2 class="section-title">九、定价来源（有据可查）</h2>
     <p style="margin-bottom:12px;font-size:13px;color:#666;">所有单价均来自服务商官方定价页，非估算。</p>
-
     <table>
         <thead>
             <tr><th>服务商</th><th>服务</th><th>官方定价</th><th>定价页</th></tr>
@@ -462,12 +710,175 @@
     </table>
 </div>
 
-<!-- 客户需提供 -->
+<!-- 十、真人化方案 -->
 <div class="section">
-    <h2 class="section-title">六、客户需自行申请的账号</h2>
-    <div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:18px;">
-        <p style="color:#e65100;font-weight:600;margin-bottom:10px;">以下账号需客户自行注册，开发方负责接入代码，费用按实际用量直接向服务商充值。</p>
-        <ul style="padding-left:20px;font-size:13px;line-height:2;">
+    <h2 class="section-title">十、AI 真人化方案（核心壁垒）</h2>
+    <p style="margin-bottom:16px;">要达到"像真人在面试"，必须在以下三方面投入：</p>
+    <table>
+        <thead>
+            <tr><th style="width:16%">维度</th><th style="width:38%">平庸方案（机械感）</th><th style="width:46%">推荐方案（真人感）</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>语音输出<br>(TTS)</strong></td>
+                <td>免费百度/讯飞基础 TTS<br>一字一顿，无情感</td>
+                <td><strong>MiniMax 情感语音</strong><br>有叹气、笑声、犹豫停顿、呼吸声<br>如："嗯... 这个方案（停顿）确实有点复杂"</td>
+            </tr>
+            <tr>
+                <td><strong>对话智能<br>(LLM)</strong></td>
+                <td>固定题库，按顺序念题<br>不会追问，答完就下一题</td>
+                <td><strong>通义千问 2.5-Max / DeepSeek V3</strong><br>根据回答动态追问 2-3 层<br>答得好加压，答得差换题，不会就结束</td>
+            </tr>
+            <tr>
+                <td><strong>交互节奏<br>(VAD)</strong></td>
+                <td>手动点击"回答完毕"<br>体验割裂，像考试软件</td>
+                <td><strong>Silero VAD 自动检测</strong><br>停顿 2 秒自动结束录音<br>全程像打电话，无需操作</td>
+            </tr>
+            <tr>
+                <td><strong>问题来源</strong></td>
+                <td>固定题库 1000 题<br>候选人可提前准备</td>
+                <td><strong>AI 实时生成</strong><br>根据简历 + 岗位 JD 个性化出题<br>千人千面，无法提前准备</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:16px;">
+        <strong>投入产出结论：</strong>TTS 选 MiniMax（多花约 0.04 元/场），LLM 选通义千问 2.5-Max（多花约 0.6 元/场），总成本增加约 0.6 元/场，但体验从"机器人"提升到"专业面试官"。
+    </div>
+</div>
+
+<!-- 十一、追问与结束逻辑 -->
+<div class="section">
+    <h2 class="section-title">十一、AI 怎么判断追问 / 换题 / 结束？</h2>
+    <p style="margin-bottom:12px;">不是固定题序，而是根据回答动态决定（由 LLM Prompt 控制）：</p>
+    <table>
+        <thead>
+            <tr><th>候选人表现</th><th>AI 行为</th><th>示例</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>回答很好，有细节</td>
+                <td><strong>追问</strong>（深挖一层）</td>
+                <td>"你刚才说的方案，如果 QPS 到 10 万还能用吗？"</td>
+            </tr>
+            <tr>
+                <td>回答一般，没什么亮点</td>
+                <td><strong>下一题</strong></td>
+                <td>"好的，我们来看下一个问题..."</td>
+            </tr>
+            <tr>
+                <td>完全不会 / 胡说</td>
+                <td><strong>再试一题</strong></td>
+                <td>"没关系，换个角度，你知道布隆过滤器吗？"</td>
+            </tr>
+            <tr>
+                <td>连续 2-3 题都不会</td>
+                <td><strong>结束面试</strong></td>
+                <td>"今天的面试就到这里，感谢你的时间。"</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-size:12px;color:#888;margin-top:10px;">兜底规则：至少问满 3 题（防止上来就结束），最多问 8 题，总时长超 30 分钟强制结束。</p>
+</div>
+
+<!-- 十二、面试结果 -->
+<div class="section">
+    <h2 class="section-title">十二、面试结果怎么出？</h2>
+    <p style="margin-bottom:12px;"><strong>AI 不直接说"通过/不通过"</strong>，而是给 HR 一份详细报告，由 HR 决策。</p>
+    <div class="cost-card">
+        <div class="title">AI 面试评估报告示例</div>
+        <div style="font-size:13px;line-height:2;color:#444;">
+            <strong>候选人：张三 | 岗位：Java 后端工程师 | 面试时间：2025-05-21 14:00</strong><br>
+            <strong>综合评分：75 / 100</strong><br>
+            技术深度：████████░░ 80　　表达能力：██████░░░░ 60<br>
+            逻辑思维：███████░░░ 70　　项目经验：████████░░ 80<br><br>
+            <strong>AI 评语：</strong><br>
+            对 Redis 和消息队列有实际使用经验，但对分布式事务理解较浅，追问两层后无法回答。建议作为初级工程师考虑。<br><br>
+            <strong>风险提示：</strong><br>
+            ⚠️ 回答"Redis 击穿"时停顿 8 秒，疑似查阅资料后念答案<br><br>
+            <strong>面试录音：</strong>[点击播放]　　<strong>完整文字：</strong>[查看]
+        </div>
+    </div>
+    <p style="font-size:13px;color:#666;margin-top:12px;">
+        <strong>HR 决策标准：</strong>分数 ≥ 80 推终面 | 60-80 待定（HR 听录音后决定）| &lt; 60 不通过
+    </p>
+</div>
+
+<!-- 十三、可行性评估 -->
+<div class="section">
+    <h2 class="section-title">十三、可行性评估与风险</h2>
+    <table>
+        <thead>
+            <tr><th style="width:16%">评估项</th><th style="width:40%">结论</th><th style="width:44%">应对措施</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>技术成熟度</strong></td>
+                <td><span class="tag tag-green">高</span> ASR/LLM/TTS 均已产品化，有大量商用案例</td>
+                <td>选用成熟服务商（讯飞、MiniMax、阿里云），降低自研风险</td>
+            </tr>
+            <tr>
+                <td><strong>开发周期</strong></td>
+                <td><span class="tag tag-green">可控</span> MVP 约 4-6 周</td>
+                <td>分阶段交付：先跑通语音问答，再叠加追问逻辑，最后优化报告</td>
+            </tr>
+            <tr>
+                <td><strong>作弊风险</strong></td>
+                <td><span class="tag tag-blue">中</span> 候选人可开 AI 代答</td>
+                <td>追问压力 + 限时回答 + 摄像头监测 + 风险评分，提高作弊成本</td>
+            </tr>
+            <tr>
+                <td><strong>使用门槛</strong></td>
+                <td><span class="tag tag-green">低</span> 候选人零注册，点开链接即用</td>
+                <td>支持手机+电脑，面试前设备检测+引导</td>
+            </tr>
+            <tr>
+                <td><strong>网络要求</strong></td>
+                <td><span class="tag tag-green">无特殊要求</span> 全部国内服务商</td>
+                <td>公司内网直接调用，无需翻墙、无需国际信用卡</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 十四、交付里程碑 -->
+<div class="section">
+    <h2 class="section-title">十四、项目交付里程碑</h2>
+    <table>
+        <thead>
+            <tr><th>阶段</th><th>周期</th><th>交付内容</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>第一阶段<br>核心对话</strong></td>
+                <td>2 周</td>
+                <td>候选人面试页：录音 → ASR → LLM → TTS → 播放，能完成基础问答</td>
+            </tr>
+            <tr>
+                <td><strong>第二阶段<br>智能追问</strong></td>
+                <td>2 周</td>
+                <td>AI 自动判断追问/换题/结束；根据简历生成个性化问题</td>
+            </tr>
+            <tr>
+                <td><strong>第三阶段<br>后台与报告</strong></td>
+                <td>2 周</td>
+                <td>HR 后台（上传简历、管理面试、查看报告）；评估报告生成</td>
+            </tr>
+            <tr>
+                <td><strong>第四阶段<br>优化上线</strong></td>
+                <td>1-2 周</td>
+                <td>Prompt 调优、VAD 灵敏度调优、UI 美化、压力测试、部署上线</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-size:12px;color:#888;margin-top:10px;">* 总周期约 6-8 周，可根据优先级调整阶段顺序</p>
+</div>
+
+<!-- 十五、客户需提供 -->
+<div class="section">
+    <h2 class="section-title">十五、客户需自行申请的账号</h2>
+    <div class="client-require">
+        <h3>必须由客户自行申请和承担的（涉及账号与 API Key）</h3>
+        <ul>
             <li><strong>阿里云账号</strong>：用于语音识别（ASR）+ 可选通义千问（LLM）+ 可选语音合成（TTS）</li>
             <li><strong>讯飞开放平台账号</strong>：备用语音识别方案（中文效果最优）</li>
             <li><strong>MiniMax 开放平台账号</strong>：用于情感语音合成（TTS），追求真人感必选</li>
@@ -477,40 +888,17 @@
             <strong>✓ 全部为国内服务商</strong>：无需翻墙、无需国际信用卡、无需科学上网，公司内网直接调用。
         </div>
     </div>
+    <div class="highlight-box" style="margin-top:12px;">
+        <strong>重要说明：</strong>AI 服务（ASR/LLM/TTS）的 API Key 必须由客户自行申请和管理。开发方负责接入代码，但<strong>不托管客户的 AI 账号和费用</strong>。客户直接按实际用量向服务商充值。
+    </div>
 </div>
 
-<!-- 其他板块摘要 -->
-<div class="section">
-    <h2 class="section-title">七、其他技术方案（摘要）</h2>
-    <p style="margin-bottom:12px;">如需查看完整技术架构、面试流程、真人化方案等详情，请参考以下摘要。完整文档包含所有细节。</p>
-
-    <table>
-        <thead>
-            <tr><th style="width:20%">板块</th><th style="width:80%">要点</th></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>技术架构</strong></td>
-                <td>React 前端 → Node.js 后端 → ASR(讯飞/阿里) → LLM(通义/DeepSeek) → TTS(MiniMax) → 候选人浏览器播放</td>
-            </tr>
-            <tr>
-                <td><strong>面试流程</strong></td>
-                <td>HR 后台上传简历 → 系统生成题目 → 发送链接 → 候选人点击即面 → 全自动语音问答 → AI 生成报告</td>
-            </tr>
-            <tr>
-                <td><strong>真人化方案</strong></td>
-                <td>MiniMax 情感 TTS（有呼吸、停顿、犹豫）+ 通义千问/DeepSeek 深度追问 + VAD 自动检测说话结束，全程无需手动操作</td>
-            </tr>
-            <tr>
-                <td><strong>开发周期</strong></td>
-                <td>6-8 周，分四阶段：核心对话 → 智能追问 → HR 后台 → 优化上线</td>
-            </tr>
-            <tr>
-                <td><strong>部署环境</strong></td>
-                <td>客户自有服务器（已有），需域名 + HTTPS 证书（Let's Encrypt 免费）</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- 结论 -->
+<div class="conclusion">
+    <h2>方案总结</h2>
+    <p>AI 面试官系统在技术层面完全可行，核心依赖成熟国内云服务（ASR/LLM/TTS）。</p>
+    <p>开发周期约 6-8 周，单场面试成本约 0.76 ~ 1.64 元，可替代 80% 的初筛工作量。</p>
+    <p style="margin-top:16px;font-size:13px;opacity:0.8;">下一步：确认预算与 AI 服务商账号申请，即可启动开发。</p>
 </div>
 
 <div style="text-align:center;padding:30px;color:#888;font-size:12px;">
